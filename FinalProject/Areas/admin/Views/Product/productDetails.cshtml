@@ -1,0 +1,47 @@
+﻿@model product
+
+@{
+    ViewBag.title = "product Details";
+    ViewBag.heading = "product Details";
+}
+
+@section breadcrumb
+{
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Home" asp-action="Index"> home </a> </li>
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Product" asp-action="Index"> all products </a> </li>
+    <li class="breadcrumb-item active"> product details </li>
+}
+
+@* ------------------------------------- Start RenderBody ------------------------------------------ *@
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Description</th>
+            <th>Color</th>
+            <th>brand</th>
+            <th>Add Date</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+
+    <tr>
+        <td><p>@Model.productDescription</p></td>
+        <td><input type="color" value="@Model.productColor" disabled  /></td>
+        <td>@Model.brandName</td>
+        <td>@Model.productAddDate</td>
+        <td>@Model.SubCategory.subCategoryName</td>
+    </tr>
+</table>
+
+<div class="row">
+    @foreach (var item in Model.ProductSubPhotos)
+    {
+    <div class="col-md-3 mb-3">
+        <div style="width:250px ; height:250px;">
+            <img src="~/photos/@item.photoName" style="display: block; width: 100%; height: 100%;" />
+        </div>
+        <a asp-area="admin" asp-controller="Product" asp-action="DeleteSubPhoto" asp-route-id="@Model.productId" asp-route-name="@item.photoName" class="btn btn-danger">delete</a>
+    </div>
+    }
+</div>

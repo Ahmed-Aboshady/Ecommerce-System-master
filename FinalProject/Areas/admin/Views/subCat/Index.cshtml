@@ -1,0 +1,59 @@
+﻿@model List<subCategory>
+
+@{
+    ViewBag.title = "sub categories";
+    ViewBag.heading = "Sub Categories";
+}
+
+@section breadcrumb
+{
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Home" asp-action="Index"> home </a> </li>
+    <li class="breadcrumb-item active"> all sub categories </li>
+
+    @*<li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Home" asp-action="Index"> home </a> </li>
+        <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="mainCat" asp-action="Index"> main categoy </a> </li>
+        <li class="breadcrumb-item active">create main category</li>*@
+}
+
+@* ------------------------------------- Start RenderBody ------------------------------------------ *@
+
+<div>
+    <a asp-area="admin" asp-controller="subCat" asp-action="Create" class="btn btn-dark"> Add New Category </a>
+</div>
+
+<br/>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th> Category Name </th>
+            <th> Category Photo </th>
+            <th> Main Category </th>
+            <th> Category Products </th>
+            <th> Action </th>
+        </tr>
+    </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.subCategoryName </td>
+                <td> <img src="~/photos/@item.subCategoryPhoto" width="75" height="100" alt="sub category photo" /> </td>
+                <td> @item.MainCategory.mainCategoryName </td>
+                <td> <a asp-area="admin" asp-controller="subCat" asp-action="selectedCategoryProducts" asp-route-id="@item.subCategoryId" class="btn btn-outline-dark"> produts </a> </td>
+                <td> <a asp-area="admin" asp-controller="subCat" asp-action="Edit" asp-route-id="@item.subCategoryId" class="btn btn-info"> Edit </a> </td>
+                <td> <a asp-area="admin" asp-controller="subCat" asp-action="Delete" asp-route-id="@item.subCategoryId" class="btn btn-danger"> Delete </a> </td>
+            </tr>
+        }
+</table>
+
+
+
+
+
+
+
+
+
+
+
+@* ------------------------------------- End RenderBody ------------------------------------------ *@

@@ -1,0 +1,50 @@
+﻿@model List<mainCategory>
+
+@{
+    ViewBag.title = "Main Catgory";
+    ViewBag.heading = "Main Category";
+}
+
+@section breadcrumb
+{
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Home" asp-action="Index"> Home </a> </li>
+    <li class="breadcrumb-item active">main category</li>
+}
+
+@* -------------------------------------- Start RenderBody ------------------------------------------------------ *@
+
+<div>
+    <a class="btn btn-dark" asp-area="admin" asp-controller="mainCat" asp-action="Create"> Add New Category </a>
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th> Category name </th>
+            <th> Category photo </th>
+            <th> Sub categories </th>
+            <th> Action </th>
+        </tr>
+    </thead>
+        @foreach (var main in Model)
+        {
+            <tr>
+                <td> @main.mainCategoryName </td>
+                <td> <img src="~/photos/@main.mainCategoryPhoto" alt="main category photo" width="50" height="50" /> </td>
+                <td>
+                    <ul style="list-style: none;">
+                        @foreach (var sub in main.SubCategories)
+                        {
+                            <li> @sub.subCategoryName </li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <a class="btn btn-info" asp-area="admin" asp-controller="mainCat" asp-action="Edit" asp-route-id="@main.mainCategoryId"> Edit </a>
+                    <a class="btn btn-danger" asp-area="admin" asp-controller="mainCat" asp-action="Delete" asp-route-id="@main.mainCategoryId"> Delete </a>
+                </td>
+            </tr>
+        }
+</table>
+
+@* -------------------------------------- End RenderBody ------------------------------------------------------ *@

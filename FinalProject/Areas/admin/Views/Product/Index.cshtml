@@ -1,0 +1,59 @@
+﻿@model List<product>
+
+@{
+    ViewBag.title = "product page";
+    ViewBag.heading = "All Products";
+}
+
+@section breadcrumb
+{
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Home" asp-action="Index"> home </a> </li>
+    <li class="breadcrumb-item active"> all products </li>
+}
+
+@* ------------------------------------- Start RenderBody ------------------------------------------ *@
+
+<div>
+    <a class="btn btn-dark" asp-area="admin" asp-controller="Product" asp-action="Create"> Add New Product </a>
+</div>
+<br />
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+            <th>Details</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.productName</td>
+            <td><img src="~/photos/@item.productPhoto" width="80" height="100" alt="@item.productName img" /></td>
+            <td>@item.productPrice</td>
+            <td>@item.productQuantity</td>
+            <td>@item.discountValue</td>
+            <td>
+                <a class="btn btn-primary" asp-area="admin" asp-controller="Product" asp-action="productDetails" asp-route-id="@item.productId"> Details </a>
+            </td>
+            <td>
+                <a class="btn btn-info" asp-area="admin" asp-controller="Product" asp-action="Edit" asp-route-id="@item.productId"> Edit </a>
+                <a class="btn btn-danger" asp-area="admin" asp-controller="Product" asp-action="Delete" asp-route-id="@item.productId"> Delete </a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+
+
+
+
+

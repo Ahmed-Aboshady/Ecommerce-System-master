@@ -1,0 +1,21 @@
+﻿@model IQueryable<FinalProject.Models.mainCategory>
+@{ 
+    Layout = null;
+}
+
+            @foreach (var Maincat in Model)
+            {
+                <div class="col-md-4 media-list span4 text-left">
+                    <h5 class="tittle-w3layouts-sub mb-3">@Maincat.mainCategoryName</h5>
+                    <ul>
+                        @foreach (var subcat in Maincat.SubCategories.Take(10))
+                        {
+                            <li>
+                                <a href="@Url.Action("getsubcategoryData","subCategoryData",new {id=subcat.subCategoryId })">@subcat.subCategoryName</a>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+            }
+ 

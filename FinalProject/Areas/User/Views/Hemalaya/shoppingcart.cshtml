@@ -1,0 +1,130 @@
+﻿@model List<FinalProject.Models.product>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<section class="banner-bottom-wthreelayouts py-lg-5 py-3 ml-3">
+    <div class="container">
+        <div class="inner-sec-shop px-lg-4 px-3">
+            <h3 class="tittle-w3layouts my-lg-4 mt-3 nav-colr">Checkout </h3>
+            <div class="checkout-right">
+                <h4 class="nav-colr">
+                    Your shopping cart contains:
+                    <span>@Model.Count Products</span>
+                </h4>
+                <table class="table timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr class="rem1">
+                                <td class="invert-image">
+                                    
+                                        <img src="~/photos/@product.productPhoto" alt=" " class="img-responsive" style="height:250px; width:100%" >
+                                 
+                                </td>
+                                <td class="invert">
+                                    <div class="quantity">
+                                        <div class="quantity-select">
+                                            <a><div class="entry value-minus" >&nbsp;</div></a>
+                                            <div class="entry value">
+                                                <span >@ViewBag.quntity</span>
+                                            </div>
+                                            <a><div class="entry value-plus active">&nbsp;</div></a>
+                                            <div class="col">
+
+                                                @*<input type="text" class="form-control" value="1">*@
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="invert">@product.productName </td>
+
+                                <td class="invert">@product.productPrice</td>
+                                <td class="invert">
+                                    <div class="rem">
+                                        <div>
+                                            <a asp-route-id="@product.productId" asp-action="deleteFcart" asp-area="User" asp-controller="Hemalaya">x</a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                </table>
+
+            </div>
+        </div>
+    </div>
+</section>
+@*Details Area ------------>>*@
+<div class="row mt-3 mb-4 ml-3">
+    <div class="col-md-8 address_form" style="margin-right:250px">
+        <h4>Add Order Details</h4>
+        <form method="post" class="creditly-card-form agileinfo_form">
+            <section class="creditly-wrapper wrapper">
+                <div class="information-wrapper">
+                    <div class="first-row form-group">
+                        <div class="controls">
+                            <label class="control-label">Full name: </label>
+                            <input class="billing-address-name form-control" type="text" name="name" placeholder="Full name">
+                        </div>
+                        <div class="card_number_grids">
+                            <div class="card_number_grid_left">
+                                <div class="controls">
+                                    <label class="control-label">Mobile number:</label>
+                                    <input class="form-control" type="text" placeholder="Mobile number">
+                                </div>
+                            </div>
+                            <div class="card_number_grid_right">
+                                <div class="controls">
+                                    <label class="control-label">Address: </label>
+                                    <input class="form-control" name="address" type="text" placeholder="Address">
+                                </div>
+                            </div>
+                            <div> </div>
+
+                        </div>
+                    </div>
+                    <button class="submit check_out btn btn-info" asp-area="User" asp-controller="Hemalaya" asp-action="makeOrder" type="submit" asp-route-id="@ViewBag.userId">Delivery to this Address</button>
+                </div>
+            </section>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+
+   
+            $(".value-plus").click(function () {
+                let span = $(this).parent().parent().find($(".value span"));
+                let val = parseInt(span.text());
+                val++;
+                span.text(val);
+            })
+
+            $(".value-minus").click(function () {
+                let span = $(this).parent().parent().find($(".value span"));
+                let val = parseInt(span.text());
+                val--;
+                span.text(val);
+            })
+
+           
+        });
+
+    </script>
+}

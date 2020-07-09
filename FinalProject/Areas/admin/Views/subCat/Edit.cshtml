@@ -1,0 +1,44 @@
+﻿@model subCategory
+
+@{
+    ViewBag.title = "Edit Sub Category";
+    ViewBag.heading = "Edit Sub Category";
+}
+
+@section breadcrumb
+{
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Home" asp-action="Index"> home </a> </li>
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="subCat" asp-action="Index"> all categories </a> </li>
+    <li class="breadcrumb-item active"> edit sub category </li>
+}
+
+@* ------------------------------------- Start RenderBody ------------------------------------------ *@
+
+<form asp-area="admin" asp-controller="subCat" asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="@Model.subCategoryName" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.subCategoryName" class="form-control" />
+            <span asp-validation-for="@Model.subCategoryName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.subCategoryPhoto" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.subCategoryPhoto" type="file" name="subcategoryphoto" class="form-control" />
+            <span asp-validation-for="@Model.subCategoryPhoto" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <select asp-for="@Model.mainCategoryId" asp-items="ViewBag.categories" class="custom-select">
+            <option value=""> choose main category </option>
+        </select>
+        <span asp-validation-for="@Model.mainCategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input asp-route-id="@Model.subCategoryId" type="submit" class="btn btn-info" value="Update" />
+    </div>
+</form>

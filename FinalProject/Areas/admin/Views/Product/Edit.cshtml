@@ -1,0 +1,102 @@
+﻿@model product
+
+@{
+    ViewBag.title = "Edit produc";
+    ViewBag.heading = "Edit product";
+}
+
+@section breadcrumb
+{
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Home" asp-action="Index"> home </a> </li>
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Product" asp-action="Index"> all products </a> </li>
+    <li class="breadcrumb-item active"> edit product </li>
+}
+
+@* ------------------------------------- Start RenderBody ------------------------------------------ *@
+
+<form asp-area="admin" asp-controller="Product" asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="@Model.productName" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.productName" class="form-control" />
+            <span asp-validation-for="@Model.productName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.productQuantity" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.productQuantity" class="form-control" />
+            <span asp-validation-for="@Model.productQuantity" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.productDescription" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <textarea asp-for="@Model.productDescription" class="form-control"></textarea>
+            <span asp-validation-for="@Model.productDescription" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.productColor" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.productColor" type="color" class="form-control" />
+            <span asp-validation-for="@Model.productColor" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.productPrice" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.productPrice" class="form-control" />
+            <span asp-validation-for="@Model.productPrice" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.discountValue" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.discountValue" class="form-control" />
+            <span asp-validation-for="@Model.discountValue" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.productPhoto" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <input type="file" name="productMainPhoto" class="form-control" />
+            <span asp-validation-for="@Model.productPhoto" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.brandName" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.brandName" class="form-control" />
+            <span asp-validation-for="@Model.brandName" class="text-danger"></span>
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <label asp-for="@Model.productAddDate" class="col-md-2 custom-control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.productAddDate" class="form-control" />
+                <span asp-validation-for="@Model.productAddDate" class="text-danger"></span>
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <label asp-for="@Model.subCategoryId" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <select asp-for="@Model.subCategoryId" asp-items="@ViewBag.categories" class="form-control">    
+            </select>
+            <span asp-validation-for="@Model.subCategoryId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" asp-route-id="@Model.productId" class="btn btn-info" value="Next" />
+    </div>
+</form>

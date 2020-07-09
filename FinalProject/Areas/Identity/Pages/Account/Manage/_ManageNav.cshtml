@@ -1,0 +1,16 @@
+﻿@using FinalProject.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item mb-2 mt-2"><a class="btn @ManageNavPages.IndexNavClass(ViewContext) link-product-add-cart" id="profile" asp-page="./Index">Profile</a></li>
+    <li class="nav-item mb-3"><a class="btn @ManageNavPages.EmailNavClass(ViewContext) link-product-add-cart" id="email" asp-page="./Email">Email</a></li>
+    <li class="nav-item mb-3"><a class="btn @ManageNavPages.ChangePasswordNavClass(ViewContext) link-product-add-cart" id="change-password" asp-page="./ChangePassword">Password</a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="btn @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
+    }
+    <li class="nav-item mb-3"><a class="btn @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext) link-product-add-cart" id="two-factor" asp-page="./TwoFactorAuthentication">Two-factor authentication</a></li>
+    <li class="nav-item mb-3"><a class="btn @ManageNavPages.PersonalDataNavClass(ViewContext) link-product-add-cart" id="personal-data" asp-page="./PersonalData">Personal data</a></li>
+</ul>

@@ -1,0 +1,39 @@
+﻿
+@model mainCategory
+
+@{
+    ViewBag.title = "Edit Main Catgory";
+    ViewBag.heading = "Edit Main Category";
+}
+
+@section breadcrumb
+{
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Home" asp-action="Index"> home </a> </li>
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="mainCat" asp-action="Index"> main categoy </a> </li>
+    <li class="breadcrumb-item active">edit main category</li>
+}
+
+@* -------------------------------------- Start RenderBody ------------------------------------------------------ *@
+
+<form asp-area="admin" asp-controller="mainCat" asp-action="Edit" method="post" enctype="multipart/form-data">
+  
+    <div class="form-group">
+        <label asp-for="@Model.mainCategoryName" class="col-md-2 custom-control-label"></label> 
+        <div class="col-md-10">
+            <input asp-for="@Model.mainCategoryName" class="form-control" />
+            <span asp-validation-for="@Model.mainCategoryName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.mainCategoryPhoto" class="col-md-2 custom-control-label"></label>
+        <div class="col-md-10">
+            <input type="file" name="mainCategoryPhoto" class="form-control"/>
+            <span asp-validation-for="@Model.mainCategoryPhoto"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input asp-route-id="@Model.mainCategoryId" type="submit" class="btn btn-info" value="update" />
+    </div>
+</form>

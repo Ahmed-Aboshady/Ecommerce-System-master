@@ -1,0 +1,135 @@
+﻿@model product
+
+@{
+    ViewData["Title"] = "Product Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="banner_inner">
+    <div class="services-breadcrumb">
+        <div class="inner_breadcrumb">
+
+           
+        </div>
+    </div>
+
+</div>
+
+<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+    <div class="container">
+        <div class="inner-sec-shop pt-lg-4 pt-3">
+            <div class="row">
+                <div class="col-lg-4 single-right-left ">
+                    <div class="grid images_3_of_2">
+                        <div class="flexslider1">
+
+                            <ul class="slides">
+                                <li data-thumb="images/1.png">
+                                    <div class="thumb-image"> <img src="~/photos/@Model.productPhoto" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                </li>
+                                <li data-thumb="images/1.png">
+                                    <div class="thumb-image"> <img src="~/photos/@Model.productPhoto" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                </li>
+                                <li data-thumb="images/1.png">
+                                    <div class="thumb-image"> <img src="~/photos/@Model.productPhoto" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                </li>`
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 single-right-left simpleCart_shelfItem">
+                    <h3>@Model.brandName (@ViewBag.color)</h3>
+                    <p>
+                        <span class="item_price">$650</span>
+                        <del>$1,199</del>
+                    </p>
+                    <div class="rating1">
+                        <ul class="stars">
+                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="occasion-cart">
+                        <div class="googles single-item singlepage">
+                            <form method="post" action="Index">
+                                <button type="submit" asp-route-ProductId="@Model.productId" name="addCart" id="addCart" class="googles-cart pgoogles-cart">
+                                    <i class="fas fa-cart-plus">Add To Cart</i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <ul class="footer-social text-left mt-lg-4 mt-3">
+                        <li>Share On : </li>
+                        <li class="mx-2">
+                            <a href="#">
+                                <span class="fab fa-facebook-f"></span>
+                            </a>
+                        </li>
+                        <li class="mx-2">
+                            <a href="#">
+                                <span class="fab fa-twitter"></span>
+                            </a>
+                        </li>
+                        <li class="mx-2">
+                            <a href="#">
+                                <span class="fab fa-google-plus-g"></span>
+                            </a>
+                        </li>
+                        <li class="mx-2">
+                            <a href="#">
+                                <span class="fab fa-linkedin-in"></span>
+                            </a>
+                        </li>
+                        <li class="mx-2">
+                            <a href="#">
+                                <span class="fas fa-rss"></span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="clearfix"> </div>
+                <!--/tabs-->
+                <div class="responsive_tabs">
+                    <div id="horizontalTab">
+                        <ul class="resp-tabs-list">
+                            <li>Description</li>
+                            <li>Reviews</li>
+                            <li>Information</li>
+                        </ul>
+                        <div class="resp-tabs-container">
+                            <!--/tab_one-->
+                            <div class="tab1">
+
+                                <div class="single_page">
+                                    <h6>@Model.SubCategory.subCategoryName / @Model.productName</h6>
+                                    <p>
+                                        @Model.productDescription
+                                    </p>
+
+                                </div>
+                            </div>
+                            <!--//tab_one-->
+
+                        </div>
+                    </div>
+                </div>
+                <!--//tabs-->
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!--/slide-->
+        <div class="slider-img mid-sec mt-lg-5 mt-2 px-lg-5 px-3">
+
+        </div>
+        <!--//slider-->
+    </div>
+</section>

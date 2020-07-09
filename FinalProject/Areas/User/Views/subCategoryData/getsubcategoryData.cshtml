@@ -1,0 +1,210 @@
+﻿
+@model List<FinalProject.Models.product>
+@{
+    ViewData["Title"] = "Proudcts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <style>
+
+   .banner_inner {
+
+        background: url('/photos/1.jpg') no-repeat 0px -73px;
+        background-size:contain;
+        background-size: auto;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        moz-background-size: cover;
+        min-height: 180px;
+    }
+    </style>
+@if (Model == null)
+{
+    <h2>No Products</h2>
+}
+else { 
+<div class="banner_inner">
+    <div class="services-breadcrumb">
+        <div class="inner_breadcrumb">
+
+            
+        </div>
+    </div>
+
+</div>
+<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+    <div class="container-fluid">
+        <div class="inner-sec-shop px-lg-4 px-3">
+            <h3 class="tittle-w3layouts my-lg-4 mt-3">New Arrivals for you </h3>
+            <div class="row">
+                <!-- product left -->
+                <div class="side-bar col-lg-3">
+                    <div class="search-hotel">
+                        <h3 class="agileits-sear-head">Search Here..</h3>
+                        <form action="#" method="post">
+                            <input class="form-control" type="search" name="search" placeholder="Search here..." required="">
+                            <button class="btn1">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <div class="clearfix"> </div>
+                        </form>
+                    </div>
+                    <!-- price range -->
+                    <div class="range">
+                        <h3 class="agileits-sear-head">Price range</h3>
+                        <select id="dropdownlist" class="w-75 h-25">
+                            <option value="300">300$</option>
+                            <option value="500">500$</option>
+                            <option value="1000">1000$</option>
+                            <option value="1500">1500$</option>
+                            <option value="2000">2000$</option>
+                        </select>
+                    </div>
+                    <!-- //price range -->
+                   
+                    <!-- discounts -->
+                    <div class="range">
+                        <h3 class="agileits-sear-head">Discount</h3>
+                        <select id="discount-dropdownlist" class="w-75 h-25">
+                            <option value="100">100$ Discount</option>
+                            <option value="200">200$ Discount</option>
+                            <option value="300">300$ Discount</option>
+                            <option value="400">400$ Discount</option>
+                            <option value="500">500$ Discount</option>
+                        </select>
+                    </div>
+                    <!-- //discounts -->
+                    <!-- reviews -->
+                    <div class="customer-rev left-side">
+                        <h3 class="agileits-sear-head">Customer Review</h3>
+                        <ul>
+                            <li>
+                                <a href="#" onclick="FilterByRate(5)">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span>5.0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="FilterByRate(4)">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <span>4.0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="FilterByRate(3)">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    
+                                    <span>3.0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="FilterByRate(2)">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span>2.0</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <!-- //reviews -->
+                    
+                    @*Add Advertisments below here*@
+                </div>
+                <!-- //product left -->
+                <!--/product right-->
+                <div class="left-ads-display col-lg-9">
+                    <div class="wrapper_top_shop">
+                        <div class="row">
+                            <div class="col-md-6 shop_left">
+                                <img src="~/photos/banner3.jpg" alt="">
+                                <h6>40% off</h6>
+                            </div>
+                            <div class="col-md-6 shop_right">
+                                <img src="~/photos/banner4.jpg" alt="">
+                                <h6>50% off</h6>
+                            </div>
+
+                        </div>
+                        <div class="row" id="prods">
+                            <!-- /Products -->
+                            @foreach (var item in Model)
+                            {
+                            <div class="col-md-3 product-men women_two shop-gd">
+                                <div class="product-googles-info googles" style="height:100% !important">
+                                    <div class="men-pro-item">
+                                        <div class="men-thumb-item">
+                                            <img src="~/photos/@item.productPhoto" class="img-fluid" style="width:100% !important;max-width:100%!important;height:100%!important;max-height:100%" alt="">
+                                            <div class="men-cart-pro">
+                                                <div class="inner-men-cart-pro">
+                                                    <a href="@Url.Action("getProductDetails","subCategoryData",new {ProductId=item.productId })" class="link-product-add-cart">Quick View</a>
+                                                </div>
+                                            </div>
+                                            <span class="product-new-top">New</span>
+                                        </div>
+                                        <div class="item-info-product">
+                                            <div class="info-product-price">
+                                                <div class="grid_meta">
+                                                    <div class="product_price">
+                                                        <h4>
+                                                            <a asp-controller="subCategoryData" asp-action="getProductDetails" asp-route-productId="@item.productId">@item.productName</a>
+                                                        </h4>
+                                                        <div class="grid-price mt-2">
+                                                            @{
+                                                                var netvalue = item.productPrice - item.discountValue;
+                                                                if (item.discountValue > 0)
+                                                                {
+                                                                    <del class="money ">$@item.productPrice</del>
+
+                                                                    <span class="money ">$@netvalue</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="money ">$@item.productPrice</span>
+
+                                                                }
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="googles single-item hvr-outline-out">
+                                                    <form method="post" action="Index">
+
+                                                        <button type="submit" asp-area="User" asp-action="Index" asp-controller="Hemalaya" asp-route-ProductId="@item.productId" name="addCart" id="addCart" class="googles-cart pgoogles-cart">
+                                                            <i class="fas fa-cart-plus"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                            
+                        </div>
+                      
+                    </div>
+                </div>
+                <!--//product right-->
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+  }

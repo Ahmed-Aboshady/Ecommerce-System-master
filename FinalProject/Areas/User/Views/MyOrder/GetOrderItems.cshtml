@@ -1,0 +1,20 @@
+﻿@model List<orderItem>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Item Id</th>
+            <th scope="col">Order Id</th>
+            <th scope="col">product Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var orderitem in Model)
+        {
+            <tr>
+                <td>@orderitem.productId</td>
+                <td>@orderitem.orderId</td>
+                <td>@orderitem.Product.productName</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+﻿@model productSubPhoto
+
+@{
+    ViewBag.title = "produc sub photos";
+    ViewBag.heading = "produc sub photos";
+}
+
+@section breadcrumb
+{
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Home" asp-action="Index"> home </a> </li>
+    <li class="breadcrumb-item active"> <a asp-area="admin" asp-controller="Product" asp-action="Create"> add product </a> </li>
+    <li class="breadcrumb-item active"> produc sub photos </li>
+}
+
+@* ------------------------------------- Start RenderBody ------------------------------------------ *@
+
+
+<form asp-area="admin" asp-controller="Product" asp-action="productsubphotos" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="col-md-2 custom-control-label">Choose photo</label>
+        <div class="col-md-10">
+            <input type="file" name="productSubPhotos" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-info" value="upload" />
+    </div>
+</form>
+
+<div class="active">
+    <a asp-area="admin" asp-controller="Product" asp-action="Index" class="btn btn-dark" > Finish </a>
+</div>
